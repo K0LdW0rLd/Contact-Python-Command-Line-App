@@ -39,8 +39,11 @@ if i==1:
 elif i==2:
     print('You selected to search a contact.')
     inputname = input('Enter the name of the person you would like to find: ')
-    searchName = Contact.get(Contact.name == inputname)
-    print(searchName)
+    searchName = Contact.select().where(Contact.name == inputname)
+    for contact in searchName:
+        print(contact.name)
+        print(contact.number)
+        print(contact.email)
 # Update
 elif i==3:
     print('You selected to update a contact.')
