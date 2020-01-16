@@ -14,9 +14,10 @@ class Contact(BaseModel):
     number = CharField()
     email = CharField()
 
-db.create_tables([Contact])
+# db.drop_tables([Contact])
+# db.create_tables([Contact])
 
-# kelly = Contact(name= 'Kelly' , number= 757-339-7428 , email= '90kcol@gmail.com')
+# kelly = Contact(name= 'Kelly' , number= 7573397428 , email= '90kcol@gmail.com')
 # kelly.save()
 
 # Ask Question of what they want to do
@@ -30,7 +31,7 @@ if i==1:
     print('You selected to add a contact.')
     # Get the data to add 
     nm = input('Enter Name: ')
-    ph = int(input('Enter Number: '))
+    ph = int(input('Enter the Phone Number(No hyphen or spaces): '))
     em = input('Enter Email: ')
     # Add data then save it
     nms = Contact(name= nm , number= ph , email=em)
@@ -38,8 +39,8 @@ if i==1:
 # Read
 elif i==2:
     print('You selected to search a contact.')
-    inputname = input('Enter the name of the person you would like to find: ')
-    searchName = Contact.select().where(Contact.name == inputname)
+    inputName = input('Enter the name of the person you would like to find: ')
+    searchName = Contact.select().where(Contact.name == inputName)
     for contact in searchName:
         print(contact.name)
         print(contact.number)
@@ -49,29 +50,29 @@ elif i==3:
     print('You selected to update a contact.')
     upd = int(input('Enter 1 to update name, 2 to update phone number, and 3 to update email: '))
     if upd == 1:
-        updnam = input('Enter the name of the person you would like to update: ')
-        newname = input('Enter new name of the contact: ')
-        findupdname = Contact.get(Contact.get == updnam)
-        findupdname.name = newname
-        findupdname.save()
+        updNam = input('Enter the name of the person you would like to update: ')
+        newName = input('Enter new name of the contact: ')
+        findUpdName = Contact.get(Contact.name == updNam)
+        findUpdName.name = newName
+        findUpdName.save()
     elif upd == 2:
-        updnum = input('Enter the name of the person you would like to update: ')
-        newnum = input('Enter the new number of the contact: ')
-        findupdnum = Contact.get(Contact.get == updnum)
-        findupdnum.number = newnum
-        findupdnum.save()
+        updNum = input('Enter the name of the person you would like to update: ')
+        newNum = int(input('Enter the new number of the contact: '))
+        findUpdNum = Contact.get(Contact.name == updNum)
+        findUpdNum.number = newNum
+        findUpdNum.save()
     elif upd == 3:
-        updemail = input('Enter the name of the person you would like to update: ')
-        newemail = input('Enter the new email of the contact: ')
-        findupdemail = Contact.get(Contact.get == updemail)
-        findupdemail.email = newemail
-        findupdemail.save()
+        updEmail = input('Enter the name of the person you would like to update: ')
+        newEmail = input('Enter the new email of the contact: ')
+        findUpdEmail = Contact.get(Contact.name == updEmail)
+        findUpdEmail.email = newEmail
+        findUpdEmail.save()
     else:
         print('You did not enter 1, 2, or 3')
 # Delete
 elif i==4:
     print('You selected to delete a contact.')
-    delcont = input('Enter the name of the contact you would like to delete: ')
-    delcont.delete_instance()
+    delCont = input('Enter the name of the contact you would like to delete: ')
+    delCont.delete_instance()
 else:
     print('You did enter 1, 2, 3, or 4')
