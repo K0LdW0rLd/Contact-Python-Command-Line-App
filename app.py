@@ -72,7 +72,8 @@ elif i==3:
 # Delete
 elif i==4:
     print('You selected to delete a contact.')
-    delCont = input('Enter the name of the contact you would like to delete: ')
+    delName = input('Enter the name of the contact you would like to delete: ')
+    delCont = Contact.get(Contact.name == delName)
     delCont.delete_instance()
 else:
     print('You did enter 1, 2, 3, or 4')
