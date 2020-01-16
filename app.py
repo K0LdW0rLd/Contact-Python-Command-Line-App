@@ -55,18 +55,21 @@ elif i==3:
         findUpdName = Contact.get(Contact.name == updNam)
         findUpdName.name = newName
         findUpdName.save()
+        print(f'Name changed to {findUpdName.name}')
     elif upd == 2:
         updNum = input('Enter the name of the person you would like to update: ')
         newNum = int(input('Enter the new number of the contact: '))
         findUpdNum = Contact.get(Contact.name == updNum)
         findUpdNum.number = newNum
         findUpdNum.save()
+        print(f'{findUpdNum.name} number changed to {findUpdNum.number}')
     elif upd == 3:
         updEmail = input('Enter the name of the person you would like to update: ')
         newEmail = input('Enter the new email of the contact: ')
         findUpdEmail = Contact.get(Contact.name == updEmail)
         findUpdEmail.email = newEmail
         findUpdEmail.save()
+        print(f'{findUpdEmail.name} email changed to {findUpdEmail.email}')
     else:
         print('You did not enter 1, 2, or 3')
 # Delete
@@ -75,5 +78,6 @@ elif i==4:
     delName = input('Enter the name of the contact you would like to delete: ')
     delCont = Contact.get(Contact.name == delName)
     delCont.delete_instance()
+    print('Contact has been deleted.')
 else:
     print('You did enter 1, 2, 3, or 4')
